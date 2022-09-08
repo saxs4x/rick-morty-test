@@ -6,8 +6,8 @@ const api = axios.create({
 })
 
 const request = <T>(method: Method, url: string, params: any):
-    Promise<AxiosResponse<Data>> => {
-    return api.request<Data>({
+    Promise<AxiosResponse<any>> => {
+    return api.request<any>({
         method,
         url,
         params

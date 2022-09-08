@@ -6,36 +6,27 @@ import {AxiosResponse} from "axios";
 import {List, Grid} from "antd";
 import CharacterCard from "../components/CharacterCard";
 
-const { useBreakpoint } = Grid;
+
 function HomePage() {
 
     const [characters, setCharacters] = useState<Character[] | []>([])
-    const [grid, setGrid] = useState({gutter: 16, column: 4});
-    const screens = useBreakpoint();
-
-    useEffect(() => {
-        if(screens.xs === true || screens.lg === false || screens.md === false){
-           setGrid({gutter: 16, column: 1})
-        }
-    });
-
 
     useEffect(() => {
         request('get', 'character', null).then((res) => {
                 setCharacters(res.data.results);
             }
         )
-    }, [characters]);
+    }, []);
 
     return (
         <div>
             <List
                 itemLayout='horizontal'
-                grid={grid}
+                grid={{gutter: 16, column: 4, xs: 1, sm: 1}}
                 dataSource={characters}
                 renderItem={(item) => (
-                    <List.Item>
-                        <CharacterCard character={item} />
+                    <List.Item key={item.id}>
+                        <CharacterCard character={item}/>
                     </List.Item>
                 )}
             />
