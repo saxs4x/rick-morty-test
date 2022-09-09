@@ -26,11 +26,18 @@ code {
 #fav {
   position: absolute;
   top: 10px;
-  left: 10px;
+  right: 20px;
+  z-index: 99;
 }
 
-#characterInfo {
+.modalList {
   list-style: none;
   padding: 0;
   margin-top: 14px;
+}
+
+.modalList .ant-list-item {
+  padding: 0 !important;
+  margin-bottom: 14px;
+  border: none !important;
 }
